@@ -3,7 +3,7 @@
 
 {% block title %}
 Stock picker
-{% endblock  %}
+{% endblock %}
 <style>
 
 </style>
@@ -11,23 +11,26 @@ Stock picker
 {% endblock %}
 
 {% block body %}
-<div class="container" >
-<h1> Live stock tracker </h1>
-<p> Select your fav. stocks </p>
-<form action="">
-<label for="stockpicker"> Select stocks: </label>
-<select class="form-select form-select-lg mb-3" multiple aria-label="Multiple select example" name="stockpicker">
-    {% for i in stockpicker %}
-    <option value="{{i}}">{{i}}</option>  
-    {% endfor %}
+<div class="container">
+  <h1> Live stock tracker </h1>
+  <p> Select your fav. stocks </p>
+  <form action="/stocktracker">
+    <label for="stockpicker"> Select stocks: </label>
+    <select class="form-select form-select-lg mb-3" multiple aria-label="Multiple select example" name="stockpicker">
+      {% for i in stockpicker %}
+      <option value="{{i}}">{{i}}</option>
+      {% endfor %}
 </div>
-  </select>
-
+</select>
+<br>
+<div class="d-grid gap-2">
+  <input class="btn btn-primary" type="submit" value="Submit">
+</div>
+</form>
 {% endblock %}
 
 {% block js %}
 <script>
 
 </script>
-{% endblock  %}
-
+{% endblock %}
