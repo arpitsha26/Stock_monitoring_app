@@ -1,8 +1,7 @@
 from django.urls import path
-from .import views
+from .views import stocklist, subscribestock
 
 urlpatterns = [
-    path('', views.stockpicker,name= 'stockpicker' ),
-    path('stocktracker/', views.stocktracker,name= 'stocktracker' ),
-  
+    path("stocks/", stocklist.as_view(), name="stock-list"),
+    path("stocks/subscribe/", subscribestock.as_view(), name="subscribe-stock"),
 ]
