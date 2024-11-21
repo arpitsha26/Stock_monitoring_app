@@ -57,7 +57,6 @@ parse==1.20.2
 peewee==3.17.8
 pillow==11.0.0
 platformdirs==4.3.6
-playwright==1.48.0
 prompt_toolkit==3.0.48
 psycopg2==2.9.10
 psycopg2-binary==2.9.9
