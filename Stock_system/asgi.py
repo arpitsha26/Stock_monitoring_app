@@ -15,6 +15,9 @@ import Home.routing
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Stock_system.settings')
 application = get_asgi_application()
+import django
+django.setup()
+
 
 application = ProtocolTypeRouter({
     "http":get_asgi_application(),
