@@ -3,7 +3,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .models import Stock
-from .serializers import StockSerializer
+from .serializers import StockSerializer, UserSerializer
+from django.shortcuts import render
 
 
 class stocklist(APIView):
@@ -15,7 +16,7 @@ class stocklist(APIView):
         if subscribed_only == "true":
             stocks = stocks.filter(subscribers=request.user)
         serializer = StockSerializer(stocks, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return render(request, 'Home/stock_list.html', {'stocks': serializer.data})
 
 
 class subscribestock(APIView):
@@ -36,3 +37,14 @@ class subscribestock(APIView):
         return Response(
             {"message": f"Unsubscribed from {symbols}."}, status=status.HTTP_200_OK
         )
+
+class SignUpView(APIView):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'Home/signup.html')
+
+    def post(self, request, *args, **kwargs):
+        serializer = UserSerializer(data=request.POST)
+        if serializer.is_valid():
+            serializer.save()
+            return Response("user create")
+        return render(request, 'Home/signup.html', {"errors": serializer.errors})
