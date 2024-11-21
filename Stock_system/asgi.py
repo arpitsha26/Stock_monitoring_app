@@ -14,7 +14,7 @@ from channels.auth import AuthMiddlewareStack
 import Home.routing
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Stock_system.settings')
-
+application = get_asgi_application()
 
 application = ProtocolTypeRouter({
     "http":get_asgi_application(),
